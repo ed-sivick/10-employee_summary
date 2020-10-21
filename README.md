@@ -66,9 +66,9 @@ Walkthrough Videos, app.js and run tests (MP4): (https://drive.google.com/drive/
   </p>
   
   <p align="left">
-  <img src="images/appjs_image1.png" width="500" align="left" title="image of app.js file output" alt="image of app.js file output">
+  <img src="images/appjs_image1.png" width="350" align="left" title="image of app.js file output" alt="image of app.js file output">
   </p>
 
   <p align="right">
-  <img src="images/test_image1.png" width="500" align="right" margin-top: 10px; title="image of run test output" alt="image of run test output">
+  <img src="images/test_image1.png" width="350" align="right" margin-top: 10px; title="image of run test output" alt="image of run test output">
   </p>
