@@ -62,13 +62,13 @@ Walkthrough Videos, app.js and run tests (MP4): (https://drive.google.com/drive/
 
 **Application Image Examples:** Hover the mouse over each image for a brief description.
 <p align="left">
-  <img src="images/team_image1.png" width="600" margin-bottom: 10px; title="image of My Team or team.html file" alt="image of My Team or team.html file">
+  <img src="images/team_image1.png" width="800" margin-bottom: 10px; title="image of My Team or team.html file" alt="image of My Team or team.html file">
   </p>
   
   <p align="left">
-  <img src="images/appjs_image1.png" width="275" align="left" title="image of app.js file output" alt="image of app.js file output">
+  <img src="images/appjs_image1.png" width="500" align="left" title="image of app.js file output" alt="image of app.js file output">
   </p>
 
   <p align="right">
-  <img src="images/test_image1.png" width="275" align="right" margin-top: 10px; title="image of run test output" alt="image of run test output">
+  <img src="images/test_image1.png" width="500" align="right" margin-top: 10px; title="image of run test output" alt="image of run test output">
   </p>
