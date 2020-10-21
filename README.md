@@ -25,7 +25,7 @@ HTML templates for each type of user are created to build the final **team.html*
 ___
 ## Installation
 (1) Type **npm i** (install) to install inquirer module, and all related dependencies   
-(2) Invoke the app by typing **node app.js**   
+(2) Invoke the app by going to the app.js file, open in integrated terminal, and type: **node app.js**   
 (3) Provide responses at the prompts   
 _____
 ## Usage
