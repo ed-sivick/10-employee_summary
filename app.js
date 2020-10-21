@@ -1,10 +1,12 @@
+// Assign const variables to node.js modules
 const inquire = require("inquirer");
 const fs = require("fs");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-let teamList = [];
+let teamArray = [];
+// Inquire & validate manager input responses
 const mgrInfo = [
     {
         type: "input",
@@ -41,6 +43,7 @@ const mgrInfo = [
         }
     },
     {
+        // Inquire to add team members
         type: "list",
         name: "moreTeam",
         message: "Are there any more team members?",
@@ -48,6 +51,7 @@ const mgrInfo = [
     }
 ]
 
+// Inquire & validate employee input responses
 const empInfo = [
     {
         type: "input",
@@ -79,6 +83,7 @@ const empInfo = [
         choices: ["engineer", "intern"]
     },
     {
+        // If member is engineer, ask for github response
         when: input => {
             return input.role == "engineer"
         },
@@ -94,6 +99,7 @@ const empInfo = [
         }
     },
     {
+        // If member is intern, ask for school response
         when: input => {
             return input.role == "intern"
         },
@@ -114,27 +120,28 @@ const empInfo = [
         choices: ["Yes", "No"]
     }
 ]
-
+// If member is manager, create team with data
 function start() {
     inquire.prompt(mgrInfo).then(mgrData => {
         let teamManager = new Manager(mgrData.name, 1, mgrData.email, mgrData.officeNumber);
-        teamList.push(teamManager);
+        teamArray.push(teamManager);
         if (mgrData.moreTeam === "Yes") {
-            teamCreate();    
+            teamCreate();
         } else {
             teamHtmlCreate();
         }
     })
 }
 
+// If member is engineer/intern, create team with data
 function teamCreate() {
     inquire.prompt(empInfo).then(empData => {
         if (empData.role == "engineer") {
-            var newMember = new Engineer(empData.name, teamList.length + 1, empData.email, empData.github);
+            var newMember = new Engineer(empData.name, teamArray.length + 1, empData.email, empData.github);
         } else {
-            var newMember = new Intern(empData.name, teamList.length + 1, empData.email, empData.school);
+            var newMember = new Intern(empData.name, teamArray.length + 1, empData.email, empData.school);
         }
-        teamList.push(newMember);
+        teamArray.push(newMember);
         if (empData.addAnother === "Yes") {
             console.log(" ");
             teamCreate();
@@ -144,13 +151,14 @@ function teamCreate() {
     })
 }
 
+// Create team.html file with manager, engineer, intern input data
 function teamHtmlCreate() {
     let newFile = fs.readFileSync("./templates/main.html")
     fs.writeFileSync("./output/team.html", newFile, function (err) {
         if (err) throw err;
     })
 
-    for (member of teamList) {
+    for (member of teamArray) {
         if (member.getRole() == "Manager") {
             memberHtmlCreate("manager", member.getName(), member.getId(), member.getEmail(), "Office: " + member.getOfficeNumber());
         } else if (member.getRole() == "Engineer") {
@@ -166,7 +174,7 @@ function teamHtmlCreate() {
     console.log("team.html page successfully completed.")
 
 }
-
+// Team inquire input values are appended to team.html
 function memberHtmlCreate(memberType, name, id, email, propertyValue) {
     let data = fs.readFileSync(`./templates/${memberType}.html`, 'utf8')
     data = data.replace("nameMember", name);
@@ -176,4 +184,5 @@ function memberHtmlCreate(memberType, name, id, email, propertyValue) {
     fs.appendFileSync("./output/team.html", data, err => { if (err) throw err; })
 }
 
+// Call start function to create team
 start();
