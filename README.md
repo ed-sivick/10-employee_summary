@@ -5,6 +5,7 @@ Build a Node CLI that takes in information about employees and generates an HTML
 ___
 ## Table of Contents
 * [Description](#description)
+* [Layout](#layout)
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
